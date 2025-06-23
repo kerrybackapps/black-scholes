@@ -39,17 +39,38 @@ def intrinsic_put(S, K):
 
 # Streamlit App
 def main():
-    # Sidebar parameters
-    with st.sidebar:
-        strike = st.slider("Strike:", min_value=10, max_value=200, value=100, step=5)
-        time_to_maturity = st.slider("Time to maturity:", 
-                                             min_value=0.1, max_value=3.0, value=1.0, step=0.1)
-        risk_free_rate = st.slider("Risk-free rate:", 
-                                           min_value=0.0, max_value=10.0, value=2.0, step=0.1) / 100.0
-        volatility = st.slider("Volatility:", 
-                                       min_value=1.0, max_value=100.0, value=20.0, step=1.0) / 100.0
-        dividend_yield = st.slider("Dividend yield:", 
-                                           min_value=0.0, max_value=10.0, value=1.0, step=0.1) / 100.0
+    # Top control area with shaded background
+    with st.container():
+        st.markdown("""
+            <style>
+            .control-area {
+                background-color: #f0f2f6;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            </style>
+            <div class="control-area">
+            """, unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            strike = st.slider("Strike:", min_value=10, max_value=200, value=100, step=5)
+            time_to_maturity = st.slider("Time to maturity:", 
+                                                 min_value=0.1, max_value=3.0, value=1.0, step=0.1)
+        
+        with col2:
+            risk_free_rate = st.slider("Risk-free rate:", 
+                                               min_value=0.0, max_value=10.0, value=2.0, step=0.1) / 100.0
+            volatility = st.slider("Volatility:", 
+                                           min_value=1.0, max_value=100.0, value=20.0, step=1.0) / 100.0
+        
+        with col3:
+            dividend_yield = st.slider("Dividend yield:", 
+                                               min_value=0.0, max_value=10.0, value=1.0, step=0.1) / 100.0
+        
+        st.markdown("</div>", unsafe_allow_html=True)
 
     
 
