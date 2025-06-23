@@ -39,20 +39,8 @@ def intrinsic_put(S, K):
 
 # Streamlit App
 def main():
-    # Top control area with shaded background
+    # Top control area
     with st.container():
-        st.markdown("""
-            <style>
-            .control-area {
-                background-color: #f0f2f6;
-                padding: 20px;
-                border-radius: 10px;
-                margin-bottom: 20px;
-            }
-            </style>
-            <div class="control-area">
-            """, unsafe_allow_html=True)
-        
         col1, col2, col3 = st.columns(3)
         
         with col1:
@@ -70,7 +58,6 @@ def main():
             dividend_yield = st.slider("Dividend yield:", 
                                                min_value=0.0, max_value=10.0, value=1.0, step=0.1) / 100.0
         
-        st.markdown("</div>", unsafe_allow_html=True)
 
     
 
